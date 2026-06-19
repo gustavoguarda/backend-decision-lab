@@ -1,0 +1,20 @@
+# Env
+.env
+
+# Reports output
+reports/results/
+*.log
+
+# Dependencies (built inside containers)
+**/node_modules/
+**/vendor/
+**/target/
+**/__pycache__/
+**/.venv/
+
+# Build artifacts
+**/bin/
+**/*.o
+
+# OS
+.DS_Store

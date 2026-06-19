@@ -1,0 +1,152 @@
+name: backend-decision-lab
+
+x-app-env: &app-env
+  DB_HOST: postgres
+  DB_PORT: 5432
+  DB_NAME: ${POSTGRES_DB:-benchmark}
+  DB_USER: ${POSTGRES_USER:-benchmark}
+  DB_PASSWORD: ${POSTGRES_PASSWORD:-benchmark}
+  APP_PORT: 8000
+  UPSTREAM_URL: http://upstream:8080
+
+x-app-defaults: &app-defaults
+  restart: unless-stopped
+  depends_on:
+    postgres:
+      condition: service_healthy
+    upstream:
+      condition: service_started
+  networks:
+    - lab
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-benchmark}
+      POSTGRES_USER: ${POSTGRES_USER:-benchmark}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-benchmark}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./infrastructure/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-benchmark} -d ${POSTGRES_DB:-benchmark}"]
+      interval: 3s
+      timeout: 3s
+      retries: 10
+    networks:
+      - lab
+
+  # Mock downstream service for the concurrency scenario. go-httpbin exposes
+  # /delay/{seconds}; the apps fan out concurrent calls to it.
+  upstream:
+    image: ghcr.io/mccutchen/go-httpbin:v2.15.0
+    networks:
+      - lab
+
+  php-laravel:
+    <<: *app-defaults
+    build: ./implementations/php-laravel
+    environment: *app-env
+    ports:
+      - "${PHP_LARAVEL_PORT:-8001}:8000"
+
+  node-fastify:
+    <<: *app-defaults
+    build: ./implementations/node-fastify
+    environment: *app-env
+    ports:
+      - "${NODE_FASTIFY_PORT:-8002}:8000"
+
+  python-fastapi:
+    <<: *app-defaults
+    build: ./implementations/python-fastapi
+    environment: *app-env
+    ports:
+      - "${PYTHON_FASTAPI_PORT:-8003}:8000"
+
+  go-gin:
+    <<: *app-defaults
+    build: ./implementations/go-gin
+    environment: *app-env
+    ports:
+      - "${GO_GIN_PORT:-8004}:8000"
+
+  rust-axum:
+    <<: *app-defaults
+    build: ./implementations/rust-axum
+    environment: *app-env
+    ports:
+      - "${RUST_AXUM_PORT:-8005}:8000"
+
+  # Load generator. Run a single scenario against a single target, e.g.:
+  #   TARGET=http://go-gin:8000 SCENARIO=health docker compose run --rm k6
+  k6:
+    image: grafana/k6:latest
+    profiles: ["tools"]
+    environment:
+      TARGET: ${TARGET:-http://go-gin:8000}
+      # When K6_OUT is set (e.g. "experimental-prometheus-rw"), k6 also streams
+      # live metrics to Prometheus. Empty by default → stdout summary only.
+      K6_OUT: ${K6_OUT:-}
+      K6_PROMETHEUS_RW_SERVER_URL: ${K6_PROMETHEUS_RW_SERVER_URL:-http://prometheus:9090/api/v1/write}
+      K6_PROMETHEUS_RW_TREND_STATS: "p(95),p(99),avg,min,max"
+      # Tags every sample so runs are distinguishable in Prometheus/Grafana.
+      K6_PROMETHEUS_RW_PUSH_INTERVAL: "5s"
+    volumes:
+      - ./k6:/scripts:ro
+      - ./reports/results:/results
+    entrypoint: ["k6", "run"]
+    command: ["/scripts/${SCENARIO:-health}.js"]
+    networks:
+      - lab
+
+  # ---- Monitoring stack (opt-in: `docker compose --profile monitoring up -d`) ----
+
+  prometheus:
+    image: prom/prometheus:v2.54.1
+    profiles: ["monitoring"]
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus"
+      - "--storage.tsdb.retention.time=30d"
+      # Required so k6 can push metrics via Prometheus remote write.
+      - "--web.enable-remote-write-receiver"
+    volumes:
+      - ./infrastructure/monitoring/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - promdata:/prometheus
+    ports:
+      - "${PROMETHEUS_PORT:-9090}:9090"
+    networks:
+      - lab
+
+  grafana:
+    image: grafana/grafana:11.2.0
+    profiles: ["monitoring"]
+    environment:
+      GF_SECURITY_ADMIN_USER: ${GRAFANA_USER:-admin}
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_PASSWORD:-admin}
+      GF_USERS_ALLOW_SIGN_UP: "false"
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ORG_ROLE: "Viewer"
+    volumes:
+      - ./infrastructure/monitoring/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./infrastructure/monitoring/grafana/dashboards:/var/lib/grafana/dashboards:ro
+      - grafanadata:/var/lib/grafana
+    ports:
+      - "${GRAFANA_PORT:-3001}:3000"
+    depends_on:
+      - prometheus
+    networks:
+      - lab
+
+networks:
+  lab:
+    driver: bridge
+
+volumes:
+  pgdata:
+  promdata:
+  grafanadata:

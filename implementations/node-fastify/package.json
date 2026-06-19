@@ -1,0 +1,17 @@
+{
+  "name": "node-fastify-benchmark",
+  "version": "1.0.0",
+  "description": "Fastify + pg benchmark implementation",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "fastify": "5.3.2",
+    "pg": "8.13.1"
+  }
+}
