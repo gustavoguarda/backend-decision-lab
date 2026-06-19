@@ -1,0 +1,9 @@
+{
+  "_comment": "Approximate on-demand compute prices (USD). Estimates for modeling, not a quote.",
+  "profiles": {
+    "aws-fargate":   {"label": "AWS Fargate",   "vcpu_hour": 0.04048, "gb_hour": 0.004445},
+    "gcp-cloud-run": {"label": "GCP Cloud Run",  "vcpu_hour": 0.0864,  "gb_hour": 0.009},
+    "generic-vm":    {"label": "Generic VM",     "vcpu_hour": 0.02,    "gb_hour": 0.005}
+  },
+  "assumptions": {"target_rps": 1000, "hours_per_month": 730}
+}

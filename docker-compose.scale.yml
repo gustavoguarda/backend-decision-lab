@@ -1,0 +1,91 @@
+# Isolated harness for the horizontal-scaling benchmark (Phase 4).
+# Runs as its own Compose project (bdl-scale) so it never collides with the main
+# stack. Apps publish NO host ports, so a service can be scaled to N replicas;
+# k6 hits the service name internally and Docker's embedded DNS round-robins
+# requests across all replicas — that is the load balancing under test.
+#
+# Driven by benchmarks/scale.sh, e.g.:
+#   docker compose -p bdl-scale -f docker-compose.scale.yml up -d --scale go-gin=4 \
+#       postgres upstream go-gin
+name: bdl-scale
+
+x-app-env: &app-env
+  DB_HOST: postgres
+  DB_PORT: 5432
+  DB_NAME: ${POSTGRES_DB:-benchmark}
+  DB_USER: ${POSTGRES_USER:-benchmark}
+  DB_PASSWORD: ${POSTGRES_PASSWORD:-benchmark}
+  APP_PORT: 8000
+  UPSTREAM_URL: http://upstream:8080
+
+x-app-defaults: &app-defaults
+  restart: unless-stopped
+  depends_on:
+    postgres:
+      condition: service_healthy
+    upstream:
+      condition: service_started
+  networks:
+    - lab
+  # No `ports:` on purpose — replicas are reached only inside the network.
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-benchmark}
+      POSTGRES_USER: ${POSTGRES_USER:-benchmark}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-benchmark}
+    volumes:
+      - ./infrastructure/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-benchmark} -d ${POSTGRES_DB:-benchmark}"]
+      interval: 3s
+      timeout: 3s
+      retries: 10
+    networks:
+      - lab
+
+  upstream:
+    image: ghcr.io/mccutchen/go-httpbin:v2.15.0
+    networks:
+      - lab
+
+  php-laravel:
+    <<: *app-defaults
+    build: ./implementations/php-laravel
+    environment: *app-env
+
+  node-fastify:
+    <<: *app-defaults
+    build: ./implementations/node-fastify
+    environment: *app-env
+
+  python-fastapi:
+    <<: *app-defaults
+    build: ./implementations/python-fastapi
+    environment: *app-env
+
+  go-gin:
+    <<: *app-defaults
+    build: ./implementations/go-gin
+    environment: *app-env
+
+  rust-axum:
+    <<: *app-defaults
+    build: ./implementations/rust-axum
+    environment: *app-env
+
+  k6:
+    image: grafana/k6:latest
+    profiles: ["tools"]
+    volumes:
+      - ./k6:/scripts:ro
+      - ./reports/results:/results
+    entrypoint: ["k6", "run"]
+    networks:
+      - lab
+
+networks:
+  lab:
+    driver: bridge
