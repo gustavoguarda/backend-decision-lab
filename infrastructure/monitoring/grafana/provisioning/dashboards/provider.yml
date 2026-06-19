@@ -1,0 +1,13 @@
+apiVersion: 1
+
+providers:
+  - name: backend-decision-lab
+    orgId: 1
+    folder: "Backend Decision Lab"
+    type: file
+    disableDeletion: false
+    updateIntervalSeconds: 10
+    allowUiUpdates: true
+    options:
+      path: /var/lib/grafana/dashboards
+      foldersFromFilesStructure: false

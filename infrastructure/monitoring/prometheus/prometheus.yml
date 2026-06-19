@@ -1,0 +1,15 @@
+global:
+  scrape_interval: 5s
+  evaluation_interval: 5s
+
+scrape_configs:
+  # Prometheus scrapes itself.
+  - job_name: prometheus
+    static_configs:
+      - targets: ["localhost:9090"]
+
+# Note: k6 does NOT get scraped — it pushes via remote write to
+# /api/v1/write (enabled by --web.enable-remote-write-receiver).
+# Resource consumption (CPU/memory per stack) is captured separately via
+# `docker stats` in benchmarks/report.sh, which works reliably across Docker
+# Desktop and native Linux (cAdvisor cannot see per-container cgroups on Desktop).
