@@ -1,0 +1,22 @@
+# Name shown in the GitHub "Actions" tab and on the status badge.
+name: build
+
+# WHEN this workflow runs.
+on:
+  push:
+    branches: [main]   # every push to main
+  pull_request:        # and every pull request
+
+# A workflow is made of one or more jobs. Jobs run in parallel by default.
+jobs:
+  docker-build:                 # job id (you pick this name)
+    runs-on: ubuntu-latest      # the throwaway VM GitHub gives you (Docker is preinstalled)
+    steps:
+      # Step 1: copy your repo's code onto that VM.
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      # Step 2: build the five service images. If any Dockerfile is broken,
+      # this command exits non-zero and the job fails (red X).
+      - name: Build all Docker images
+        run: docker compose build
