@@ -98,6 +98,10 @@ Output lands in `reports/results/<timestamp>/`:
 
 Each run is its own timestamped directory, so reports accumulate as history.
 
+📊 **See [`reports/example/`](reports/example/) for a complete sample run** — all
+five scenarios across all five stacks, plus cost, deploy-footprint, and scaling
+results, with notes on the test environment.
+
 ## Monitoring (Grafana + Prometheus)
 
 An opt-in monitoring profile streams live k6 metrics to Prometheus (via k6's

@@ -1,0 +1,148 @@
+{
+  "representative_scenario": "database",
+  "target_rps": 1000.0,
+  "hours_per_month": 730.0,
+  "profiles": {
+    "aws-fargate": {
+      "go-gin": {
+        "rps": 31352.512803157893,
+        "vcpu": 3.862,
+        "mem_gb": 0.01474609375,
+        "hourly_cost": 0.15639930638671876,
+        "cost_per_million": 0.0013856704898534558,
+        "instances_for_target": 1,
+        "monthly_at_target": 114.1714936623047
+      },
+      "node-fastify": {
+        "rps": 16138.336079713905,
+        "vcpu": 1.22,
+        "mem_gb": 0.26591796875,
+        "hourly_cost": 0.050567605371093755,
+        "cost_per_million": 0.0008703844670320595,
+        "instances_for_target": 1,
+        "monthly_at_target": 36.91435192089844
+      },
+      "php-laravel": {
+        "rps": 4347.728209680867,
+        "vcpu": 3.983,
+        "mem_gb": 0.13720703125,
+        "hourly_cost": 0.16184172525390628,
+        "cost_per_million": 0.010340120776788763,
+        "instances_for_target": 1,
+        "monthly_at_target": 118.14445943535158
+      },
+      "python-fastapi": {
+        "rps": 10985.07996919017,
+        "vcpu": 3.915,
+        "mem_gb": 0.17607421875,
+        "hourly_cost": 0.15926184990234377,
+        "cost_per_million": 0.004027226280985592,
+        "instances_for_target": 1,
+        "monthly_at_target": 116.26115042871095
+      },
+      "rust-axum": {
+        "rps": 27534.56631508598,
+        "vcpu": 3.9389999999999996,
+        "mem_gb": 0.0126953125,
+        "hourly_cost": 0.15950715066406249,
+        "cost_per_million": 0.0016091606943833612,
+        "instances_for_target": 1,
+        "monthly_at_target": 116.44021998476562
+      }
+    },
+    "gcp-cloud-run": {
+      "go-gin": {
+        "rps": 31352.512803157893,
+        "vcpu": 3.862,
+        "mem_gb": 0.01474609375,
+        "hourly_cost": 0.33380951484375004,
+        "cost_per_million": 0.002957493895833305,
+        "instances_for_target": 1,
+        "monthly_at_target": 243.68094583593754
+      },
+      "node-fastify": {
+        "rps": 16138.336079713905,
+        "vcpu": 1.22,
+        "mem_gb": 0.26591796875,
+        "hourly_cost": 0.10780126171875,
+        "cost_per_million": 0.001855506960194985,
+        "instances_for_target": 1,
+        "monthly_at_target": 78.6949210546875
+      },
+      "php-laravel": {
+        "rps": 4347.728209680867,
+        "vcpu": 3.983,
+        "mem_gb": 0.13720703125,
+        "hourly_cost": 0.34536606328125,
+        "cost_per_million": 0.022065550777647817,
+        "instances_for_target": 1,
+        "monthly_at_target": 252.11722619531253
+      },
+      "python-fastapi": {
+        "rps": 10985.07996919017,
+        "vcpu": 3.915,
+        "mem_gb": 0.17607421875,
+        "hourly_cost": 0.33984066796875,
+        "cost_per_million": 0.008593490972449812,
+        "instances_for_target": 1,
+        "monthly_at_target": 248.0836876171875
+      },
+      "rust-axum": {
+        "rps": 27534.56631508598,
+        "vcpu": 3.9389999999999996,
+        "mem_gb": 0.0126953125,
+        "hourly_cost": 0.34044385781250003,
+        "cost_per_million": 0.003434509815737939,
+        "instances_for_target": 1,
+        "monthly_at_target": 248.52401620312503
+      }
+    },
+    "generic-vm": {
+      "go-gin": {
+        "rps": 31352.512803157893,
+        "vcpu": 3.862,
+        "mem_gb": 0.01474609375,
+        "hourly_cost": 0.07731373046875001,
+        "cost_per_million": 0.0006849861245940177,
+        "instances_for_target": 1,
+        "monthly_at_target": 56.4390232421875
+      },
+      "node-fastify": {
+        "rps": 16138.336079713905,
+        "vcpu": 1.22,
+        "mem_gb": 0.26591796875,
+        "hourly_cost": 0.02572958984375,
+        "cost_per_million": 0.0004428652529373559,
+        "instances_for_target": 1,
+        "monthly_at_target": 18.7826005859375
+      },
+      "php-laravel": {
+        "rps": 4347.728209680867,
+        "vcpu": 3.983,
+        "mem_gb": 0.13720703125,
+        "hourly_cost": 0.08034603515625001,
+        "cost_per_million": 0.005133334473222869,
+        "instances_for_target": 1,
+        "monthly_at_target": 58.652605664062506
+      },
+      "python-fastapi": {
+        "rps": 10985.07996919017,
+        "vcpu": 3.915,
+        "mem_gb": 0.17607421875,
+        "hourly_cost": 0.07918037109375001,
+        "cost_per_million": 0.00200222006464493,
+        "instances_for_target": 1,
+        "monthly_at_target": 57.80167089843751
+      },
+      "rust-axum": {
+        "rps": 27534.56631508598,
+        "vcpu": 3.9389999999999996,
+        "mem_gb": 0.0126953125,
+        "hourly_cost": 0.07884347656249999,
+        "cost_per_million": 0.0007953989709220944,
+        "instances_for_target": 1,
+        "monthly_at_target": 57.55573789062499
+      }
+    }
+  }
+}

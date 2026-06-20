@@ -1,0 +1,292 @@
+{
+  "generated_at": "2026-06-20T16:14:49",
+  "scenarios": {
+    "concurrency": {
+      "go-gin": {
+        "rps": 184.57674131055455,
+        "avg_ms": 53.89221947367476,
+        "p95_ms": 56.86136375,
+        "p99_ms": 60.00702809999999,
+        "error_rate": 0.0,
+        "iterations": 5546.0,
+        "checks_passes": 16638,
+        "checks_fails": 0
+      },
+      "node-fastify": {
+        "rps": 177.80162375552217,
+        "avg_ms": 56.05974437181886,
+        "p95_ms": 64.13100874999999,
+        "p99_ms": 79.73537282999999,
+        "error_rate": 0.0,
+        "iterations": 5344.0,
+        "checks_passes": 16032,
+        "checks_fails": 0
+      },
+      "php-laravel": {
+        "rps": 143.90625955084073,
+        "avg_ms": 69.19570730452875,
+        "p95_ms": 102.15473425,
+        "p99_ms": 124.49380337,
+        "error_rate": 0.0,
+        "iterations": 4328.0,
+        "checks_passes": 12984,
+        "checks_fails": 0
+      },
+      "python-fastapi": {
+        "rps": 91.3190226522403,
+        "avg_ms": 109.35918457725946,
+        "p95_ms": 212.85160059999998,
+        "p99_ms": 224.19286944,
+        "error_rate": 0.0,
+        "iterations": 2744.0,
+        "checks_passes": 8232,
+        "checks_fails": 0
+      },
+      "rust-axum": {
+        "rps": 184.37982091316042,
+        "avg_ms": 53.98216418255689,
+        "p95_ms": 57.0121497,
+        "p99_ms": 58.971045309999994,
+        "error_rate": 0.0,
+        "iterations": 5538.0,
+        "checks_passes": 16614,
+        "checks_fails": 0
+      }
+    },
+    "cpu": {
+      "go-gin": {
+        "rps": 1558.0345894744996,
+        "avg_ms": 12.803304739901186,
+        "p95_ms": 60.492581699999995,
+        "p99_ms": 83.1577374,
+        "error_rate": 0.0,
+        "iterations": 46763.0,
+        "checks_passes": 140289,
+        "checks_fails": 0
+      },
+      "node-fastify": {
+        "rps": 28.575564320794246,
+        "avg_ms": 691.6654373879416,
+        "p95_ms": 1262.3299773999997,
+        "p99_ms": 2032.9690994999974,
+        "error_rate": 0.0,
+        "iterations": 879.0,
+        "checks_passes": 2637,
+        "checks_fails": 0
+      },
+      "php-laravel": {
+        "rps": 150.73829796993792,
+        "avg_ms": 132.40311188318296,
+        "p95_ms": 159.809263,
+        "p99_ms": 179.10824644,
+        "error_rate": 0.0,
+        "iterations": 4537.0,
+        "checks_passes": 13611,
+        "checks_fails": 0
+      },
+      "python-fastapi": {
+        "rps": 215.6025475922906,
+        "avg_ms": 92.56808460530753,
+        "p95_ms": 159.310808,
+        "p99_ms": 244.15971059999998,
+        "error_rate": 0.0,
+        "iterations": 6481.0,
+        "checks_passes": 19443,
+        "checks_fails": 0
+      },
+      "rust-axum": {
+        "rps": 508.97990545741027,
+        "avg_ms": 39.232715335994904,
+        "p95_ms": 58.48821774999999,
+        "p99_ms": 68.69220741999999,
+        "error_rate": 0.0,
+        "iterations": 15280.0,
+        "checks_passes": 45840,
+        "checks_fails": 0
+      }
+    },
+    "database": {
+      "go-gin": {
+        "rps": 31352.512803157893,
+        "avg_ms": 1.5287036723912726,
+        "p95_ms": 3.9669473999999982,
+        "p99_ms": 6.5414714799999985,
+        "error_rate": 0.0,
+        "iterations": 940607.0,
+        "checks_passes": 2821821,
+        "checks_fails": 0
+      },
+      "node-fastify": {
+        "rps": 16138.336079713905,
+        "avg_ms": 3.0411722440240836,
+        "p95_ms": 5.123759299999999,
+        "p99_ms": 8.64500036,
+        "error_rate": 0.0,
+        "iterations": 484198.0,
+        "checks_passes": 1452594,
+        "checks_fails": 0
+      },
+      "php-laravel": {
+        "rps": 4347.728209680867,
+        "avg_ms": 11.430531743157625,
+        "p95_ms": 17.224588799999992,
+        "p99_ms": 22.89170844,
+        "error_rate": 0.0,
+        "iterations": 130477.0,
+        "checks_passes": 391431,
+        "checks_fails": 0
+      },
+      "python-fastapi": {
+        "rps": 10985.07996919017,
+        "avg_ms": 4.468740017049158,
+        "p95_ms": 9.427889749999997,
+        "p99_ms": 14.468226019999998,
+        "error_rate": 0.0,
+        "iterations": 329752.0,
+        "checks_passes": 989256,
+        "checks_fails": 0
+      },
+      "rust-axum": {
+        "rps": 27534.56631508598,
+        "avg_ms": 1.7411511188698494,
+        "p95_ms": 4.260959199999997,
+        "p99_ms": 6.993112429999993,
+        "error_rate": 0.0,
+        "iterations": 826114.0,
+        "checks_passes": 2478342,
+        "checks_fails": 0
+      }
+    },
+    "health": {
+      "go-gin": {
+        "rps": 63714.54117984952,
+        "avg_ms": 0.7385064333646099,
+        "p95_ms": 2.2392680999999963,
+        "p99_ms": 4.087064559999999,
+        "error_rate": 0.0,
+        "iterations": 1911559.0,
+        "checks_passes": 3823118,
+        "checks_fails": 0
+      },
+      "node-fastify": {
+        "rps": 41109.99249574929,
+        "avg_ms": 1.1806956385361118,
+        "p95_ms": 2.3500927499999995,
+        "p99_ms": 4.481459349999999,
+        "error_rate": 0.0,
+        "iterations": 1233606.0,
+        "checks_passes": 2467212,
+        "checks_fails": 0
+      },
+      "php-laravel": {
+        "rps": 5680.2505213819,
+        "avg_ms": 8.743636526675749,
+        "p95_ms": 17.182893249999996,
+        "p99_ms": 30.049983809999983,
+        "error_rate": 0.0,
+        "iterations": 170454.0,
+        "checks_passes": 340908,
+        "checks_fails": 0
+      },
+      "python-fastapi": {
+        "rps": 23999.045215822127,
+        "avg_ms": 2.0160623413604637,
+        "p95_ms": 5.200522599999998,
+        "p99_ms": 9.111938339999998,
+        "error_rate": 0.0,
+        "iterations": 721302.0,
+        "checks_passes": 1442604,
+        "checks_fails": 0
+      },
+      "rust-axum": {
+        "rps": 76348.0049067136,
+        "avg_ms": 0.6138342452663391,
+        "p95_ms": 1.837799999999999,
+        "p99_ms": 3.469581,
+        "error_rate": 0.0,
+        "iterations": 2290551.0,
+        "checks_passes": 4581102,
+        "checks_fails": 0
+      }
+    },
+    "json": {
+      "go-gin": {
+        "rps": 54095.48788803862,
+        "avg_ms": 0.8654819562771614,
+        "p95_ms": 2.631028649999998,
+        "p99_ms": 4.957657379999999,
+        "error_rate": 0.0,
+        "iterations": 1623018.0,
+        "checks_passes": 4869054,
+        "checks_fails": 0
+      },
+      "node-fastify": {
+        "rps": 36165.850742917406,
+        "avg_ms": 1.3378441575188333,
+        "p95_ms": 2.9543493999999995,
+        "p99_ms": 5.986790819999999,
+        "error_rate": 0.0,
+        "iterations": 1085299.0,
+        "checks_passes": 3255897,
+        "checks_fails": 0
+      },
+      "php-laravel": {
+        "rps": 5803.145296752982,
+        "avg_ms": 8.560304129142555,
+        "p95_ms": 15.238013,
+        "p99_ms": 19.636704599999998,
+        "error_rate": 0.0,
+        "iterations": 174141.0,
+        "checks_passes": 522423,
+        "checks_fails": 0
+      },
+      "python-fastapi": {
+        "rps": 22809.710213550083,
+        "avg_ms": 2.1238198713365346,
+        "p95_ms": 5.43367675,
+        "p99_ms": 9.43339681,
+        "error_rate": 0.0,
+        "iterations": 684374.0,
+        "checks_passes": 2053122,
+        "checks_fails": 0
+      },
+      "rust-axum": {
+        "rps": 60468.549157120346,
+        "avg_ms": 0.7638210299941097,
+        "p95_ms": 2.3397049999999995,
+        "p99_ms": 4.6430669999999985,
+        "error_rate": 0.0,
+        "iterations": 1814325.0,
+        "checks_passes": 5442975,
+        "checks_fails": 0
+      }
+    }
+  },
+  "ranking": [
+    {
+      "stack": "go-gin",
+      "avg_rank": 1.4,
+      "scenarios": 5
+    },
+    {
+      "stack": "rust-axum",
+      "avg_rank": 1.6,
+      "scenarios": 5
+    },
+    {
+      "stack": "node-fastify",
+      "avg_rank": 3.4,
+      "scenarios": 5
+    },
+    {
+      "stack": "python-fastapi",
+      "avg_rank": 4.0,
+      "scenarios": 5
+    },
+    {
+      "stack": "php-laravel",
+      "avg_rank": 4.6,
+      "scenarios": 5
+    }
+  ]
+}

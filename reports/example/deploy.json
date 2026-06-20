@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-06-20T13:23:21",
+  "stacks": {
+    "go-gin": {
+      "image_mb": 4.6,
+      "cold_start_ms": 170
+    },
+    "rust-axum": {
+      "image_mb": 33.6,
+      "cold_start_ms": 142
+    },
+    "node-fastify": {
+      "image_mb": 53.8,
+      "cold_start_ms": 388
+    },
+    "python-fastapi": {
+      "image_mb": 62.8,
+      "cold_start_ms": 600
+    },
+    "php-laravel": {
+      "image_mb": 261.1,
+      "cold_start_ms": 833
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "stack": "go-gin",
+  "results": [
+    {
+      "replicas": 1,
+      "rps": 69538,
+      "p95_ms": 2.01
+    },
+    {
+      "replicas": 2,
+      "rps": 64590,
+      "p95_ms": 2.3
+    },
+    {
+      "replicas": 4,
+      "rps": 55604,
+      "p95_ms": 2.65
+    }
+  ]
+}

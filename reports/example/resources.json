@@ -1,0 +1,32 @@
+{
+  "php-laravel": {
+    "cpu_avg_pct": 256.7,
+    "cpu_peak_pct": 398.3,
+    "mem_avg_mib": 139.0,
+    "mem_peak_mib": 140.5
+  },
+  "node-fastify": {
+    "cpu_avg_pct": 86.4,
+    "cpu_peak_pct": 122.0,
+    "mem_avg_mib": 103.2,
+    "mem_peak_mib": 272.3
+  },
+  "python-fastapi": {
+    "cpu_avg_pct": 202.1,
+    "cpu_peak_pct": 391.5,
+    "mem_avg_mib": 177.6,
+    "mem_peak_mib": 180.3
+  },
+  "go-gin": {
+    "cpu_avg_pct": 138.7,
+    "cpu_peak_pct": 386.2,
+    "mem_avg_mib": 11.9,
+    "mem_peak_mib": 15.1
+  },
+  "rust-axum": {
+    "cpu_avg_pct": 120.8,
+    "cpu_peak_pct": 393.9,
+    "mem_avg_mib": 10.6,
+    "mem_peak_mib": 13.0
+  }
+}
