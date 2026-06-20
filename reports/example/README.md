@@ -1,7 +1,7 @@
 # Example Benchmark Results
 
-A complete sample run of every phase, committed so the framework's output is
-visible without running it yourself. Regenerate any of these with the scripts in
+A complete sample run, committed so the framework's output is visible without
+running it yourself. Regenerate any of these with the scripts in
 [`../../benchmarks/`](../../benchmarks).
 
 > **These numbers are machine-dependent.** They were produced on a single
