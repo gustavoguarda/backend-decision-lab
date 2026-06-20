@@ -14,7 +14,7 @@ jobs:
     steps:
       # Step 1: copy your repo's code onto that VM.
       - name: Check out the repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       # Step 2: build the five service images. If any Dockerfile is broken,
       # this command exits non-zero and the job fails (red X).
