@@ -4,8 +4,14 @@ name: build
 # WHEN this workflow runs.
 on:
   push:
-    branches: [main]   # every push to main
-  pull_request:        # and every pull request
+    branches: [main]
+    # Only build when something that affects the images changes — so a
+    # README/docs-only push doesn't trigger a pointless rebuild.
+    paths:
+      - 'implementations/**'        # Dockerfiles + service source
+      - 'docker-compose.yml'        # build contexts
+      - '.github/workflows/build.yml'  # the workflow itself
+  pull_request:        # PRs always build (full safety check before merge)
 
 # A workflow is made of one or more jobs. Jobs run in parallel by default.
 jobs:
