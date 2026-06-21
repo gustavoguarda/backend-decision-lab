@@ -1,5 +1,6 @@
 # Backend Decision Lab
 
+[![build](https://github.com/gustavoguarda/backend-decision-lab/actions/workflows/build.yml/badge.svg)](https://github.com/gustavoguarda/backend-decision-lab/actions/workflows/build.yml)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
 ![k6](https://img.shields.io/badge/load%20testing-k6-7D64FF?logo=k6&logoColor=white)
