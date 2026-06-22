@@ -51,7 +51,7 @@ for sc in "${SCENARIOS[@]}"; do
     docker compose run --rm "${k6env[@]}" k6 \
       --summary-export="/results/$TS/${sc}__${svc}.json" \
       --summary-trend-stats="avg,min,med,max,p(90),p(95),p(99)" \
-      --tag "stack=$svc" --tag "scenario=$sc" --tag "testid=$TS" \
+      --tag "stack=$svc" --tag "bench=$sc" --tag "testid=$TS" \
       "/scripts/${sc}.js" >/dev/null 2>&1 || echo "   !! k6 run failed for $sc/$svc"
 
     kill "$sampler" 2>/dev/null || true

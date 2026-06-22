@@ -45,10 +45,10 @@
           "uid": "prometheus"
         },
         "query": {
-          "query": "label_values(k6_http_reqs_total, scenario)",
+          "query": "label_values(k6_http_reqs_total, bench)",
           "refId": "StandardVariableQuery"
         },
-        "definition": "label_values(k6_http_reqs_total, scenario)",
+        "definition": "label_values(k6_http_reqs_total, bench)",
         "includeAll": true,
         "allValue": ".*",
         "multi": true,
@@ -127,7 +127,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "sum(rate(k6_http_reqs_total{stack=~\"$stack\", scenario=~\"$scenario\"}[1m])) by (stack)",
+          "expr": "sum(rate(k6_http_reqs_total{stack=~\"$stack\", bench=~\"$scenario\"}[1m])) by (stack)",
           "legendFormat": "{{stack}}"
         }
       ]
@@ -182,7 +182,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "max(k6_http_req_duration_p95{stack=~\"$stack\", scenario=~\"$scenario\"}) by (stack)",
+          "expr": "max(k6_http_req_duration_p95{stack=~\"$stack\", bench=~\"$scenario\"}) by (stack)",
           "legendFormat": "{{stack}}"
         }
       ]
@@ -237,7 +237,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "max(k6_http_req_duration_p99{stack=~\"$stack\", scenario=~\"$scenario\"}) by (stack)",
+          "expr": "max(k6_http_req_duration_p99{stack=~\"$stack\", bench=~\"$scenario\"}) by (stack)",
           "legendFormat": "{{stack}}"
         }
       ]
@@ -292,7 +292,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "max(k6_http_req_duration_avg{stack=~\"$stack\", scenario=~\"$scenario\"}) by (stack)",
+          "expr": "max(k6_http_req_duration_avg{stack=~\"$stack\", bench=~\"$scenario\"}) by (stack)",
           "legendFormat": "{{stack}}"
         }
       ]
@@ -349,7 +349,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "max(k6_http_req_failed_rate{stack=~\"$stack\", scenario=~\"$scenario\"}) by (stack)",
+          "expr": "max(k6_http_req_failed_rate{stack=~\"$stack\", bench=~\"$scenario\"}) by (stack)",
           "legendFormat": "{{stack}}"
         }
       ]
@@ -406,7 +406,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "max(k6_checks_rate{stack=~\"$stack\", scenario=~\"$scenario\"}) by (stack)",
+          "expr": "max(k6_checks_rate{stack=~\"$stack\", bench=~\"$scenario\"}) by (stack)",
           "legendFormat": "{{stack}}"
         }
       ]
@@ -462,7 +462,7 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "expr": "max(k6_vus{stack=~\"$stack\", scenario=~\"$scenario\"}) by (stack)",
+          "expr": "max(k6_vus{stack=~\"$stack\", bench=~\"$scenario\"}) by (stack)",
           "legendFormat": "{{stack}}"
         }
       ]
