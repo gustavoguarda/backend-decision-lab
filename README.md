@@ -48,7 +48,7 @@ absolute numbers are machine-dependent.** Full data in
 | Rust / Axum      |      1.6 | health (76k RPS), JSON       |
 | Node / Fastify   |      3.4 | I/O-bound; weak on CPU       |
 | Python / FastAPI |      4.0 | consistent, lower throughput |
-| PHP / Laravel    |      4.6 | heaviest CPU/memory use      |
+| PHP / Laravel    |      4.6 | highest CPU use, lowest throughput |
 
 **Trade-offs the data surfaces:**
 
