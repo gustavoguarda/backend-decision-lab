@@ -134,7 +134,7 @@
     },
     {
       "id": 2,
-      "title": "Latency p95 (ms)",
+      "title": "Latency p95",
       "type": "timeseries",
       "datasource": {
         "type": "prometheus",
@@ -148,7 +148,7 @@
       },
       "fieldConfig": {
         "defaults": {
-          "unit": "ms",
+          "unit": "s",
           "custom": {
             "drawStyle": "line",
             "lineInterpolation": "linear",
@@ -189,7 +189,7 @@
     },
     {
       "id": 3,
-      "title": "Latency p99 (ms)",
+      "title": "Latency p99",
       "type": "timeseries",
       "datasource": {
         "type": "prometheus",
@@ -203,7 +203,7 @@
       },
       "fieldConfig": {
         "defaults": {
-          "unit": "ms",
+          "unit": "s",
           "custom": {
             "drawStyle": "line",
             "lineInterpolation": "linear",
@@ -244,7 +244,7 @@
     },
     {
       "id": 4,
-      "title": "Latency avg (ms)",
+      "title": "Latency avg",
       "type": "timeseries",
       "datasource": {
         "type": "prometheus",
@@ -258,7 +258,7 @@
       },
       "fieldConfig": {
         "defaults": {
-          "unit": "ms",
+          "unit": "s",
           "custom": {
             "drawStyle": "line",
             "lineInterpolation": "linear",
