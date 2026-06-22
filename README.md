@@ -34,9 +34,11 @@ teams can reason about real trade-offs: performance, resource cost, and operatio
 
 ## Results
 
-A full sample run (4 vCPU / 7 GB Docker host) — **relative comparison is the
-signal; absolute numbers are machine-dependent.** Full data in
+A full sample run (4 vCPU Docker host) — **relative comparison is the signal;
+absolute numbers are machine-dependent.** Full data in
 [`reports/example/`](reports/example/).
+
+![Live Grafana dashboard — the database scenario across all five stacks](docs/grafana-database.png)
 
 **Throughput ranking** (average rank across all five scenarios, lower is better):
 
